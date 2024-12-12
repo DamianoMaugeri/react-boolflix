@@ -1,6 +1,12 @@
 
 import placeholder_Flag from '../../assets/placeholder_Flag.webp'
 import { IMG_BASE_URI } from '../../config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
+import placeHolderFilm from '../../assets/placeHolderFilm.jpg'
+
+
 
 export default function Card({ content }) {
 
@@ -30,6 +36,19 @@ export default function Card({ content }) {
 
     const formattedVote = Math.ceil(vote_average / 2)
 
+    const restVote = 5 - formattedVote
+
+    const StarVote = []
+
+    for (let index = 0; index < formattedVote; index++) {
+        StarVote.push(<FontAwesomeIcon icon={faStar} />)
+
+    }
+    for (let index = 0; index < restVote; index++) {
+        StarVote.push(<FontAwesomeIcon icon={faStarRegular} />)
+
+    }
+
 
 
 
@@ -38,14 +57,22 @@ export default function Card({ content }) {
 
         <div>
             <div>
-                <img src={`${IMG_BASE_URI}w342${poster_path}`} alt="" />
+                <img src={poster_path !== null ? `${IMG_BASE_URI}w342${poster_path}` : placeHolderFilm} alt="" />
             </div>
             <div>{title}</div>
             <div>{original_title}</div>
             <div>
                 <img src={getFlagUrl(original_language)} alt="" />
             </div>
-            <div>{formattedVote}</div>
+            <div>
+                <ul>
+                    {StarVote.map((star, i) => (
+                        <li key={i}>{star}</li>
+                    ))}
+                </ul>
+            </div>
+
+
         </div>
 
 
