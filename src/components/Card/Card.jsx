@@ -1,4 +1,6 @@
 
+import placeholder_Flag from '../../assets/placeholder_Flag.webp'
+import { IMG_BASE_URI } from '../../config';
 
 export default function Card({ content }) {
 
@@ -18,12 +20,15 @@ export default function Card({ content }) {
                 break;
             case 'ja': url = 'https://flagcdn.com/h20/jp.png';
                 break;
-            default: url = 'https://flagcdn.com/h20/gb.png';
+            default: url = placeholder_Flag;
                 break
 
         }
         return url
     }
+
+
+    const formattedVote = Math.ceil(vote_average / 2)
 
 
 
@@ -32,10 +37,15 @@ export default function Card({ content }) {
 
 
         <div>
+            <div>
+                <img src={`${IMG_BASE_URI}w342${poster_path}`} alt="" />
+            </div>
             <div>{title}</div>
             <div>{original_title}</div>
-            <img src={getFlagUrl(original_language)} alt="" />
-            <div>{vote_average}</div>
+            <div>
+                <img src={getFlagUrl(original_language)} alt="" />
+            </div>
+            <div>{formattedVote}</div>
         </div>
 
 
