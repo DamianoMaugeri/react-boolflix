@@ -5,6 +5,7 @@ import { useState } from "react"
 import axios from "axios"
 import { BASE_URI, key } from "./config"
 import MainLayout from "./layouts/MainLayout"
+import './app.css'
 
 function App() {
 
@@ -12,7 +13,11 @@ function App() {
   const [tvs, setTvs] = useState([])
 
   function fetchAll(title) {
+    fetchFilms(title)
+    fetchTvs(title)
+  }
 
+  function fetchFilms(title) {
     axios.get(`${BASE_URI}/search/movie`, {
       params: {
         api_key: key,
@@ -24,7 +29,9 @@ function App() {
       })
       .catch(err => console.error(err))
 
+  }
 
+  function fetchTvs(title) {
     axios.get(`${BASE_URI}/search/tv`, {
       params: {
         api_key: key,
@@ -35,7 +42,6 @@ function App() {
         setTvs(res.data.results.map(tv => ({ ...tv, title: tv.name, original_title: tv.original_name })))
       })
       .catch(err => console.error(err))
-
 
   }
 

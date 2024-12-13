@@ -9,19 +9,18 @@ export default function Films() {
 
 
     return (
-        <section>
-            <h2>film</h2>
+        <>
             {films.length ?
-                <ul>
-                    {films.map(film => (
-                        <li key={film.id}>
-                            <Card content={film} />
-                        </li>
-                    ))}
-
-                </ul> :
+                films.map(film => (
+                    <div className="col_2" key={film.id}>
+                        <Card content={film} />
+                    </div>
+                ))
+                :
                 <div>Non ci sono film che corrispondono</div>
             }
-        </section>
+        </>
+
+
     )
 }

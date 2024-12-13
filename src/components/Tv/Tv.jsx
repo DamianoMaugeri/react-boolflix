@@ -10,22 +10,19 @@ export default function Tv() {
     console.log(tvs)
 
     return (
-
-        <section>
-            <h2>Serie TV</h2>
-
+        <>
             {tvs.length ?
-                <ul>
-                    {tvs.map(tv => (
-                        <li key={tv.id}>
-                            <Card content={tv} />
-                        </li>
-                    ))}
+                tvs.map(tv => (
+                    <div className="col_2" key={tv.id}>
+                        <Card content={tv} />
+                    </div>
+                ))
 
-                </ul> :
+                :
                 <div>Non ci sono  serie tv che corrispondono</div>
             }
-        </section>
+
+        </>
 
     )
 }

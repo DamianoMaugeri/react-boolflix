@@ -1,0 +1,7 @@
+.navlink {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
